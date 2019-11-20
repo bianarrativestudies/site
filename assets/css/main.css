@@ -110,10 +110,26 @@ input, select, textarea {
 		line-height: 1.65em;
 	}
 
+	.hide-mobile {
+		display: inline-block;
+	}
+
+	.hide-desktop {
+		display: none;
+	}
+
 		@media screen and (max-width: 1680px) {
 
 			body, input, select, textarea {
 				font-size: 13pt;
+			}
+
+			.hide-mobile {
+				display: none;
+			}
+
+			.hide-desktop {
+				display: inline-block;
 			}
 
 		}
@@ -122,6 +138,14 @@ input, select, textarea {
 
 			body, input, select, textarea {
 				font-size: 12pt;
+			}
+
+			.hide-mobile {
+				display: none;
+			}
+
+			.hide-desktop {
+				display: inline-block;
 			}
 
 		}
