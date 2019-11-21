@@ -1,0 +1,48 @@
+This is a quick guide to help you edit the text in each page in this folder.
+
+-- Editing in Github -- 
+The quickest way to update a page is to click on the page in GitHub
+and at the top right (Next to the Raw - Blame - History buttons) click the Pencil icon.
+
+This will open the GitHub text editor. It doesn't offer any formatting (like bold, italic etc)
+so you'll need to add this yourself. Examples given later.
+
+For ease of editing, again at the top right change the "No Wrap" button to "Soft Wrap" so you
+don't have to scroll horizontally on long lines of text.
+
+Once you've finished editing a document, scroll down to the bottom of the screen and click "Commit Changes".
+There is no need to add anything in the comments, but you can if you want to explain the changes you've
+made. Otherwise leave everything as default and hit Commit Changes.
+
+-- Pages --
+Each page of the website has its own file. These are located in the "pages" folder and end with .html
+
+Most of the time you'll only be interested in the main section of the page. This can be found just
+after the <!-- Main --> comment line about halfway down.
+
+While the text should be obvious, a small amount of HTML knowledge is required for formatting
+paragraphs, line breaks and headers etc.
+
+You'll need to surround your text with HTML tags, which look like <this></this>. Notice especially
+the forward slash before the name of the last tag! Anything between the tags will be formatted
+depending on the kind of tag you use.
+
+The most common and useful tags are:
+
+<b>This text will show as bold</b>
+
+<i>This text will show as italic</i>
+
+<p>This is a regular paragraph of text. It forces a line break after it. Used for regular text</p>
+
+<h3>This is a header. Same as paragraph but text is bigger. Used as a title.</h3>
+
+Some special tags:
+
+<hr /> creates a horizontal rule, basically a line spanning the width of the page.
+
+<br /> creates a line break. This is done automatically after <p> and <h3> tags but you can use it
+if you need more space.
+
+For images, links and more information on HTML, go to https://www.w3schools.com/html/html_basic.asp
+Any help with problems or errors, contact amackey.mail@gmail.com
