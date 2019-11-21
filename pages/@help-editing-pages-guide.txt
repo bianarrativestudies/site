@@ -12,7 +12,8 @@ don't have to scroll horizontally on long lines of text.
 
 Once you've finished editing a document, scroll down to the bottom of the screen and click "Commit Changes".
 There is no need to add anything in the comments, but you can if you want to explain the changes you've
-made. Otherwise leave everything as default and hit Commit Changes.
+made. Otherwise leave everything as default and hit Commit Changes. You should then see the website update
+with your changes within a few minutes.
 
 -- Pages --
 Each page of the website has its own file. These are located in the "pages" folder and end with .html
