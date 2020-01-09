@@ -12,6 +12,7 @@ class Member {
     tags = [];
 
     Member(data){
+        console.log("Creating member with data " + data);
         this.title = data.title;
         this.forename = data.forename;
         this.surname = data.surname;

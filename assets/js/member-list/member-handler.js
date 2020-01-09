@@ -10,9 +10,7 @@ class MemberHandler {
 
         this.members = [];
 
-        for (var i = 0; i < data.length; i++) {
-            this.members.push(new Member(data[i]));
-        }
+        data.forEach(x => this.members.push(new Member(x)));
 
         console.log("Loaded " + this.members.length + " members.");
         console.log("First: " + this.members[0]);
@@ -20,9 +18,8 @@ class MemberHandler {
     }
 
     fetchData() {
-        var handler = this;
-        $.getJSON("../assets/data/member-data.json", function(data) {
-            handler.populateList(data);
+        $.getJSON("../assets/data/member-data.json", data => {
+            this.populateList(data);
         });
     }
 
