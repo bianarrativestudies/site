@@ -12,8 +12,9 @@ class MemberHandler {
     }
 
     fetchData() {
+        var handler = this;
         $.getJSON("../assets/data/member-data.json", function(data) {
-            this.populateList(data);
+            handler.populateList(data);
         });
     }
 
