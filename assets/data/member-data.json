@@ -1,0 +1,17 @@
+[
+    {
+        "title": "Mr",
+        "forename": "John",
+        "surname": "Testington",
+        "institution": "University of Testing",
+        "city": "Testsville",
+        "department": "Testing",
+        "thesis": "Theories of Testing",
+        "webpage": "www.test.ac.uk",
+        "tags": [
+            "Testing",
+            "Trying",
+            "Breaking Stuff"
+        ]
+    }
+]

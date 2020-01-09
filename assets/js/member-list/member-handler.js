@@ -1,4 +1,7 @@
 class MemberHandler {
+
+    members = [];
+
     MemberHandler() {
         
     }
@@ -8,7 +11,9 @@ class MemberHandler {
     }
 
     fetchData() {
-
+        $.getJSON("../assets/data/member-data.json", function(data) {
+            console.log(data);
+        });
     }
 
     buildMembers() {

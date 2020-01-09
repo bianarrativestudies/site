@@ -82,6 +82,6 @@
 
 		var handler = new MemberHandler();
 
-		handler.populateList();
+		handler.fetchData();
 
 })(jQuery);
