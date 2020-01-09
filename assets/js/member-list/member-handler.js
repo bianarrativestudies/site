@@ -69,7 +69,7 @@ class MemberHandler {
 
     filterInstitute(searchTerm) {
         if (searchTerm) {
-            let filteredMembers = this.members.filter(x => x.institution.toLowerCase().includes(searchTerm.toLowerCase()));
+            let filteredMembers = this.members.filter(x => x.institution.toLowerCase().includes(searchTerm.toLowerCase()) || x.city.toLowerCase().includes(searchTerm.toLowerCase()));
             this.renderMembers(filteredMembers);
         } else {
             this.renderMembers(this.members);
