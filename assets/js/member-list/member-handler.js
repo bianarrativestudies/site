@@ -13,7 +13,7 @@ class MemberHandler {
 
     fetchData() {
         $.getJSON("../assets/data/member-data.json", function(data) {
-            populateList(data);
+            this.populateList(data);
         });
     }
 
