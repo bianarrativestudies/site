@@ -7,13 +7,13 @@ class MemberHandler {
     }
 
     populateList(members) {
+        this.members = members;
         $("#member-list").html(members);
     }
 
     fetchData() {
         $.getJSON("../assets/data/member-data.json", function(data) {
-            members = data;
-            populateList(members);
+            populateList(data);
         });
     }
 
