@@ -15,6 +15,7 @@ class MemberHandler {
         }
 
         console.log("Loaded " + this.members.length + " members.");
+        console.log("First: " + this.members[0].getFullName());
         $("#member-list").html(this.members[0].getFullName());
     }
 
