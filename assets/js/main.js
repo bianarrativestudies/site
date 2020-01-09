@@ -89,7 +89,7 @@
 		handler.filterSurname(value);
 	});
 
-	$("#member-institute-filter").on("keyup", function () {
+	$("#member-institution-filter").on("keyup", function () {
 		var value = this.value.toLowerCase().trim();
 		handler.filterInstitute(value);
 	});
