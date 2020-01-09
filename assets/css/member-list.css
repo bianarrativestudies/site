@@ -1,0 +1,51 @@
+.member-input-container {
+    margin-bottom: 25px;
+}
+
+.member-input {
+    margin-bottom: 25px;
+    border-radius: 3px !important;
+    border-width: thin !important;
+    border: dotted !important;
+    border-color: #adadad !important;
+}
+
+.member-input:focus {
+    margin-bottom: 25px;
+    border-radius: 3px !important;
+    border-width: thin !important;
+    border: none !important;
+    border-color: #adadad !important;
+}
+
+.member-list {
+
+}
+
+.member-institution {
+    color: #667380 !important;
+}
+
+.member-name {
+    
+}
+
+.member-department {
+
+}
+
+.member-thesis {
+
+}
+
+.member-site {
+
+}
+
+.member-tags-title {
+
+}
+
+.member-tags {
+
+}

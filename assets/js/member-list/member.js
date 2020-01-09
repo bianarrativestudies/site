@@ -1,18 +1,16 @@
 class Member {
 
-    title = "";
-    forename = "";
-    surname = "";
-    institution = "";
-    city = "";
-    department = "";
-    thesis = "";
-    webpage = "";
-
+    title;
+    forename;
+    surname;
+    institution;
+    city;
+    department;
+    thesis;
+    webpage;
     tags = [];
 
-    Member(data){
-        console.log("Creating member with data " + data);
+    constructor(data) {
         this.title = data.title;
         this.forename = data.forename;
         this.surname = data.surname;
@@ -29,13 +27,7 @@ class Member {
     }
 
     containsTag(tag) {
-        for (i = 0; i < this.tags.length; i++) {
-            if (tags[i].toLowerCase() == tag.toLowerCase()) {
-                return true;
-            }
-        }
-
-        return false;
+        return this.tags.some(x => x.toLowerCase() == tag.toLowerCase());
     }
 
 }

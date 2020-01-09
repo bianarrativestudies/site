@@ -10,6 +10,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="../assets/css/main.css" />
+		<link rel="stylesheet" href="../assets/css/member-list.css" />
 		<link rel="icon" href="../favicon.png" type="image/x-icon"/>
 		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
 	</head>
@@ -52,16 +53,15 @@
 						<section class="wrapper style5">
 							<div class="inner">
 
-								<p>This directory provides key information about the members of the association, including institutional affiliation, web page and research interests. The list can be sorted or filtered by surname, institution and research area by using the buttons below.</p>
-
+								<p>This directory provides key information about the members of the association, including institutional affiliation, web page and research interests.</p>
+								<h3>Filter</h3>
+								<p class="member-input-container"><b>Surname</b> <input class="member-input" type="text" id="member-surname-filter" placeholder="e.g. Smith" title="Filter"></p>
+								<p class="member-input-container"><b>Institution</b> <input class="member-input" type="text" id="member-institution-filter" placeholder="e.g. York" title="Filter"></p>
+								<p class="member-input-container"><b>Research Area</b> <input class="member-input" type="text" id="member-research-filter" placeholder="e.g. Narrative" title="Filter"></p>
 								<hr />
-								<div id="member-list"></div>
-
-								<h4>Feugiat aliquam</h4>
-								<p>Nam sapien ante, varius in pulvinar vitae, rhoncus id massa. Donec varius ex in mauris ornare, eget euismod urna egestas. Etiam lacinia tempor ipsum, sodales porttitor justo. Aliquam dolor quam, semper in tortor eu, volutpat efficitur quam. Fusce nec fermentum nisl. Aenean erat diam, tempus aliquet erat.</p>
-
-								<p>Etiam iaculis nulla ipsum, et pharetra libero rhoncus ut. Phasellus rutrum cursus velit, eget condimentum nunc blandit vel. In at pulvinar lectus. Morbi diam ante, vulputate et imperdiet eget, fermentum non dolor. Ut eleifend sagittis tincidunt. Sed viverra commodo mi, ac rhoncus justo. Duis neque ligula, elementum ut enim vel, posuere finibus justo. Vivamus facilisis maximus nibh quis pulvinar. Quisque hendrerit in ipsum id tellus facilisis fermentum. Proin mauris dui, at vestibulum sit amet, auctor bibendum neque.</p>
-
+								<h2>Members</h2>
+								<hr />
+								<div id="member-list">Loading...</div>
 							</div>
 						</section>
 					</article>
