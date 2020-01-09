@@ -8,7 +8,8 @@ class MemberHandler {
 
     populateList(members) {
         this.members = members;
-        $("#member-list").html(members);
+        console.log("Loaded " + members.length + " members.");
+        $("#member-list").html(members[0].name);
     }
 
     fetchData() {
