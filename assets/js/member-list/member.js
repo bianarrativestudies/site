@@ -11,17 +11,16 @@ class Member {
 
     tags = [];
 
-    Member(options = {}){
-        Object.assign(this, options);
-        // this.title = title;
-        // this.forename = forename;
-        // this.surname = surname;
-        // this.institution = institution;
-        // this.city = city;
-        // this.thesis = thesis;
-        // this.department = department;
-        // this.webpage = webpage;
-        // this.tags = tags;
+    Member(data){
+        this.title = data.title;
+        this.forename = data.forename;
+        this.surname = data.surname;
+        this.institution = data.institution;
+        this.city = data.city;
+        this.thesis = data.thesis;
+        this.department = data.department;
+        this.webpage = data.webpage;
+        this.tags = data.tags;
     }
 
     getFullName() {
