@@ -6,13 +6,14 @@ class MemberHandler {
         
     }
 
-    populateList() {
-        $("#member-list").html("Member list");
+    populateList(members) {
+        $("#member-list").html(members);
     }
 
     fetchData() {
         $.getJSON("../assets/data/member-data.json", function(data) {
-            console.log(data);
+            members = data;
+            populateList(members);
         });
     }
 
