@@ -6,10 +6,16 @@ class MemberHandler {
         
     }
 
-    populateList(members) {
-        this.members = members;
-        console.log("Loaded " + members.length + " members.");
-        $("#member-list").html(members[0].name);
+    populateList(data) {
+
+        this.members = [];
+
+        for (var i = 0; i < data.length; i++) {
+            this.members.push(new Member(data[i]));
+        }
+
+        console.log("Loaded " + this.members.length + " members.");
+        $("#member-list").html(this.members[0].getFullName());
     }
 
     fetchData() {
