@@ -80,8 +80,4 @@
 
 		}
 
-		var handler = new MemberHandler();
-
-		handler.populateList();
-
 })(jQuery);
