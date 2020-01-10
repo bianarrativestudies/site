@@ -5,90 +5,104 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>BIA - Members</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="../assets/css/main.css" />
-		<link rel="stylesheet" href="../assets/css/member-list.css" />
-		<link rel="icon" href="../favicon.png" type="image/x-icon"/>
-		<noscript><link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+<head>
+	<title>BIA - Members</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="../assets/css/main.css" />
+	<link rel="stylesheet" href="../assets/css/member-list.css" />
+	<link rel="icon" href="../favicon.png" type="image/x-icon" />
+	<noscript>
+		<link rel="stylesheet" href="../assets/css/noscript.css" /></noscript>
+</head>
 
-				<!-- Header -->
-					<header id="header">
-						<h1 class="hide-mobile"><a href="../index.html">British and Irish Association for Narrative Studies</a></h1>
-						<h1 class="hide-desktop"><a href="../index.html">BIA Narrative Studies</a></h1>
-						<nav id="nav">
+<body class="is-preload">
+
+	<!-- Page Wrapper -->
+	<div id="page-wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1 class="hide-mobile"><a href="../index.html">British and Irish Association for Narrative Studies</a></h1>
+			<h1 class="hide-desktop"><a href="../index.html">BIA Narrative Studies</a></h1>
+			<nav id="nav">
+				<ul>
+					<li class="special">
+						<a href="#menu" class="menuToggle"><span>Menu</span></a>
+						<div id="menu">
 							<ul>
-								<li class="special">
-									<a href="#menu" class="menuToggle"><span>Menu</span></a> 
-									<div id="menu">
-										<ul>
-											<li><a href="../index.html">Home</a></li>
-											<li><a href="about.html">About</a></li>
-											<li><a href="research.html">Research Areas</a></li>
-											<li><a href="members.html">Members</a></li>
-											<li><a href="discussion.html">Discussion Forum</a></li>
-											<li><a href="links.html">Links</a></li>
-											<li><a href="join.html">Join</a></li>
-											<li><a href="contact.html">Contact</a></li>
-										</ul>
-									</div>
-								</li>
+								<li><a href="../index.html">Home</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="research.html">Research Areas</a></li>
+								<li><a href="members.html">Members</a></li>
+								<li><a href="discussion.html">Discussion Forum</a></li>
+								<li><a href="links.html">Links</a></li>
+								<li><a href="join.html">Join</a></li>
+								<li><a href="contact.html">Contact</a></li>
 							</ul>
-						</nav>
-					</header>
+						</div>
+					</li>
+				</ul>
+			</nav>
+		</header>
 
-				<!-- Main -->
-					<article id="main">
-						<header>
-							<h2>Directory of BIANS members</h2>
-							<p>Information about members of the Association</p>
-						</header>
-						<section class="wrapper style5">
-							<div class="inner">
+		<!-- Main -->
+		<article id="main">
+			<header>
+				<h2>Directory of BIANS members</h2>
+				<p>Information about members of the Association</p>
+			</header>
+			<section class="wrapper style5">
+				<div class="inner">
 
-								<p>This directory provides key information about the members of the association, including institutional affiliation, web page and research interests.</p>
-								<h3>Filter</h3>
-								<p class="member-input-container"><b>Surname</b> <input class="member-input" type="text" id="member-surname-filter" placeholder="e.g. Smith" title="Filter"></p>
-								<p class="member-input-container"><b>Institution</b> <input class="member-input" type="text" id="member-institution-filter" placeholder="e.g. University of York" title="Filter"></p>
-								<p class="member-input-container"><b>Research Area</b> <input class="member-input" type="text" id="member-research-filter" placeholder="e.g. Narrative" title="Filter"></p>
-								<hr />
-								<h2>Members</h2>
-								<hr />
-								<div id="member-list">Loading...</div>
-							</div>
-						</section>
-					</article>
+					<p>This directory provides key information about the members of the association, including
+						institutional affiliation, web page and research interests.</p>
+					<h3>Filter</h3>
+					<p><a id="top" onclick="clearFilters()">Clear filters</a></p>
+					<p class="member-input-container"><b>Surname</b> <input class="member-input" type="text"
+							id="member-surname-filter" placeholder="e.g. Smith" title="Filter"></p>
+					<p class="member-input-container"><b>Institution</b> <input class="member-input" type="text"
+							id="member-institution-filter" placeholder="e.g. University of York" title="Filter"></p>
+					<p class="member-input-container"><b>Research Area</b> <input class="member-input" type="text"
+							id="member-research-filter" placeholder="e.g. Narrative" title="Filter"></p>
+					<hr />
+					<h2 id="member-list-title">Members</h2>
+					<hr />
+					Sort by: <span id="sort-surname" class="member-sort"></span> | <span id="sort-institution"
+						class="member-sort"></span> | <span id="sort-city" class="member-sort"></span>
 
-				<!-- Footer -->
-					<footer id="footer">
-						<ul class="icons">
-							<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-							<li><a href="contact.html" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-						</ul>
-						<ul class="copyright">
-							<li>&copy; Alex Mackey</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>Images: Drachir Hslaw</a></li>
-						</ul>
-					</footer>
+					<div id="member-list">Loading...</div>
+				</div>
+			</section>
+		</article>
 
-			</div>
+		<!-- Footer -->
+		<footer id="footer">
+			<ul class="icons">
+				<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+				<li><a href="contact.html" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Alex Mackey</li>
+				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+				<li>Images: Drachir Hslaw</a></li>
+			</ul>
+		</footer>
 
-		<!-- Scripts -->
-			<script src="../assets/js/jquery.min.js"></script>
-			<script src="../assets/js/jquery.scrollex.min.js"></script>
-			<script src="../assets/js/jquery.scrolly.min.js"></script>
-			<script src="../assets/js/browser.min.js"></script>
-			<script src="../assets/js/breakpoints.min.js"></script>
-			<script src="../assets/js/util.js"></script>
-			<script src="../assets/js/member-list/member.js"></script>
-			<script src="../assets/js/member-list/member-handler.js"></script>
-			<script src="../assets/js/main.js"></script>
+	</div>
 
-	</body>
+	<!-- Scripts -->
+	<script src="../assets/js/jquery.min.js"></script>
+	<script src="../assets/js/jquery.scrollex.min.js"></script>
+	<script src="../assets/js/jquery.scrolly.min.js"></script>
+	<script src="../assets/js/browser.min.js"></script>
+	<script src="../assets/js/breakpoints.min.js"></script>
+	<script src="../assets/js/util.js"></script>
+	<script src="../assets/js/member-list/member.js"></script>
+	<script src="../assets/js/member-list/member-handler.js"></script>
+	<script src="../assets/js/main.js"></script>
+
+</body>
+
 </html>

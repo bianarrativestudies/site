@@ -18,8 +18,25 @@
     border-color: #adadad !important;
 }
 
-.member-list {
+.hidden {
+    visibility: hidden;
+}
 
+#top {
+    cursor: pointer;
+}
+
+.member-tag {
+    cursor: pointer;
+}
+
+.member-sort {
+    user-select: none;
+    cursor: pointer;
+}
+
+#member-list {
+margin-top: 75px;
 }
 
 .member-institution {

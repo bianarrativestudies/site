@@ -99,4 +99,33 @@
 		handler.filterResearchArea(value);
 	});
 
+	$("#top").on("click", function () {
+		$('#member-surname-filter').val(null);
+		$('#member-institution-filter').val(null);
+		$('#member-research-filter').val(null);
+		handler.filterResearchArea(null);
+	});
+	
+	$("#sort-surname").on("click", function () {
+		handler.sortBySurname();
+	});
+
+	$("#sort-institution").on("click", function () {
+		handler.sortByInstitution();
+	});
+
+	$("#sort-city").on("click", function () {
+		handler.sortByCity();
+	});
+
 })(jQuery);
+
+function filter(tag) {
+	const url = "members?tag=" + tag + "#top";
+	window.location.href = url;
+}
+
+function clearFilters() {
+	const url = "members#top";
+	window.location.href = url;
+}
