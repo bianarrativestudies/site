@@ -84,14 +84,13 @@
 
 	handler.fetchData();
 
-	$("#member-research-filter").on("keyup", function () {
-		var value = this.value.toLowerCase().trim();
-		handler.filterResearchArea(value);
+	$("#member-text-filter").on("keyup", function () {
+		handler.searchTerm = this.value.toLowerCase().trim();
+		handler.renderAll();
 	});
 
 	$("#top").on("click", function () {
-		$('#member-research-filter').val(null);
-		handler.filterResearchArea(null);
+		handler.resetAll();
 	});
 	
 	$("#sort-surname").on("click", function () {

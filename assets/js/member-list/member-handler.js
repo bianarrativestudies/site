@@ -4,12 +4,21 @@ class MemberHandler {
     tags = [];
     letters = [];
 
+    searchTerm = "";
+    tag = "";
+
     sortedBySurname = false;
     sortedByInstitution = false;
-    descending = true;
+    descending = false;
 
     constructor() {
 
+    }
+
+    fetchData() {
+        $.getJSON("../assets/data/member-data.json", data => {
+            this.populateList(data);
+        });
     }
 
     populateList(data) {
@@ -18,26 +27,165 @@ class MemberHandler {
 
         data.forEach(x => this.members.push(new Member(x)));
 
-        this.tags = this.getDistinctTags(this.members);
-        this.letters = this.getDistinctLetters(this.members);
-
         console.log("Found " + this.members.length + " members.");
 
-        const tag = (new URL(document.location)).searchParams.get("tag");
+        this.renderAll();
+    }
 
-        $('#member-research-filter').val(tag);
-        // $('#member-list-title').html(`Members (${this.members.length})`);
+    renderAll() {
+        // Get tag
+        this.tag = (new URL(document.location)).searchParams.get("tag");
 
-        this.filterResearchArea(tag);
+        // Get tags
+        this.tags = this.getDistinctTags(this.members);
+
+        // Get letters
+        this.letters = this.getDistinctLetters(this.members);
+
+        // filter by tag
+        let filteredMembers = this.filterOnTag(this.members, this.tag);
+
+        // filter by free text box
+        filteredMembers = this.filterOnText(filteredMembers);
+
+        // render members
+        this.renderMembers(filteredMembers, this.letters);
+
+        //render sorter
         this.renderSorter();
+
+        //render tags
         this.renderTagList(this.tags);
+
+        // render letter list
         this.renderLetterList(this.letters);
     }
 
-    fetchData() {
-        $.getJSON("../assets/data/member-data.json", data => {
-            this.populateList(data);
-        });
+    filterOnTag(members, tag) {
+        return members.filter(x => x.containsTag(tag));
+    }
+
+    filterOnText(members) {
+
+        if (!this.searchTerm) return members;
+
+        const term = this.searchTerm.toLowerCase();
+
+        return members.filter(x => 
+            x.tags.some(y => y.toLowerCase().includes(term)) ||
+            x.surname.toLowerCase().includes(term) ||
+            x.city.toLowerCase().includes(term) ||
+            x.forename.toLowerCase().includes(term) ||
+            x.institution.toLowerCase().includes(term) ||
+            x.department.toLowerCase().includes(term));
+    }
+
+    resetAll() {
+        $('#member-text-filter').val(null);
+        this.searchTerm = "";
+        this.sortedBySurname = false;
+        this.sortedByInstitution = false;
+        this.descending = true;
+        this.renderAll();
+    }
+
+    getDistinctTags(members) {
+        return members
+            .map(x => x.tags)
+            .reduce((a, b) => a.concat(b), [])
+            .filter((value, index, self) => self.indexOf(value) === index)
+            .sort((a, b) => a.localeCompare(b));
+    }
+
+    getDistinctLetters(members) {
+
+        if (this.sortedBySurname) {
+            return members
+                .map(x => x.surname[0])
+                .filter((value, index, self) => self.indexOf(value) === index)
+                .sort((a, b) => a.localeCompare(b));
+        } else {
+            return members
+                .map(x => x.letter)
+                .filter((value, index, self) => self.indexOf(value) === index)
+                .sort((a, b) => a.localeCompare(b));
+        }
+    }
+
+    renderMembers(filteredMembers, letters) {
+
+        if (this.descending) {
+            letters = letters.reverse();
+        }
+
+        let content = "";
+
+        for (var i = 0; i < letters.length; i++) {
+            const letter = letters[i];
+
+            const letterMembers = this.sortedBySurname ?
+                filteredMembers.filter(x => x.surname[0] == letter) :
+                filteredMembers.filter(x => x.letter == letter);
+
+            content += `<a id=${letter}>${letter}</a><br><br>`;
+            letterMembers.forEach(x => content += x.getHtml());
+        }
+
+        if (!content) {
+            content = "<h3>No results for search term</h3>"
+        }
+
+        $("#member-list").html(content);
+    }
+
+    renderTagList(tags) {
+        let content = "";
+
+        content += `<a onclick="clearFilters()" class="member-tag">All</a> |`
+
+        tags.forEach(x => {
+            if (this.tag == x) {
+                content += `<a onclick="filter('${x.toString()}')" class="member-tag"><b>${x}</b></a> |`;
+            } else {
+                content += `<a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`;
+            }
+        })
+
+        $("#tag-list").html(content);
+    }
+
+    renderLetterList(letters) {
+        let content = "";
+
+        letters.forEach(x => content += `<a onclick="jumpToLetter('${x.toString()}')" class="member-tag">${x}</a> `)
+
+        $("#letter-list").html(content);
+    }
+
+    renderSorter() {
+        const surname = (this.sortedBySurname ? `<b>Surname ${this.descending ? '(Descending)' : ""} </b>` : `Surname `)
+        const institution = (this.sortedByInstitution ? `<b>Institution ${this.descending ? '(Descending)' : ""}</b>` : `Institution `)
+
+        $("#sort-surname").html(surname);
+        $("#sort-institution").html(institution);
+    }
+
+    sortBySurname() {
+
+        this.sortedBySurname = true;
+        this.sortedByInstitution = false;
+        this.descending = !this.descending;
+
+        this.renderAll();
+    }
+
+    sortByInstitution() {
+
+        this.sortedBySurname = false;
+        this.sortedByInstitution = true;
+        this.descending = !this.descending;
+
+        this.renderAll();
     }
 
     processForm(data) {
@@ -59,134 +207,5 @@ class MemberHandler {
 
         $("#code-generated-label").html(`<b>Thanks! To complete the sign-up process, please send the code below to <a href="mailto:bianarrativestudies@gmail.com?subject=New%20Member&body=${code}">bianarrativestudies@gmail.com</a></b>`);
         $("#code-generated").html(code);
-    }
-
-    getDistinctTags(data) {
-        return data
-            .map(x => x.tags)
-            .reduce((a, b) => a.concat(b), [])
-            .filter((value, index, self) => self.indexOf(value) === index)
-            .sort((a, b) => a.localeCompare(b));
-    }
-
-    getDistinctLetters(data) {
-        return data
-            .map(x => x.letter)
-            .filter((value, index, self) => self.indexOf(value) === index)
-            .sort((a, b) => a.localeCompare(b));
-    }
-
-    renderTagList(data) {
-        let content = "";
-
-        data.forEach(x => content += `<a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`)
-
-        $("#tag-list").html(content);
-    }
-
-    renderLetterList(data) {
-        let content = "";
-
-        data.forEach(x => content += `<a onclick="jumpToLetter('${x.toString()}')" class="member-tag">${x}</a> `)
-
-        $("#letter-list").html(content);
-    }
-
-    renderMembers(filteredMembers) {
-
-        let content = "";
-
-        if (!this.sortedByInstitution && !this.sortedBySurname) {
-
-            const noLetterMembers = filteredMembers.filter(x => x.letter == false);
-
-            if (noLetterMembers && noLetterMembers.length > 0) {
-                content += `<a id=no-letter>None</a><br>`;
-                noLetterMembers.forEach(x => content += this.getMemberForRender(x));
-            }
-
-            for (var i = 0; i < this.letters.length; i++) {
-                const letter = this.letters[i];
-
-                const letterMembers = filteredMembers.filter(x => x.letter == letter);
-
-                content += `<a id=${letter}>${letter}</a><br><br>`;
-                letterMembers.forEach(x => content += this.getMemberForRender(x));
-
-            }
-        } else {
-            filteredMembers.forEach(x => content += this.getMemberForRender(x));
-        }
-
-        if (!content) {
-            content = "<h3>No results for search term</h3>"
-        }
-
-        $("#member-list").html(content);
-    }
-
-    getMemberForRender(member) {
-        const title = `<h2 class="member-institution">${member.institution} (${member.city})</h2>`;
-        const name = `<h2 class="member-name">${member.title} ${member.forename} ${member.surname}</h2>`;
-        const department = `<p class="member-department">${member.department}</p>`;
-        const thesis = `<p class="member-thesis"><i>${member.thesis}</i></p>`;
-        const site = `<p class="member-site"><a href="${member.webpage}">Visit Site</a></p>`;
-        const tagsOpen = `<p class="member-tags">Research Interests: |`;
-
-        let tags = ""
-
-        member.tags.forEach(x => tags += ` <a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`);
-
-        const tagsClose = `</p>`;
-        const hr = `<hr />`;
-
-        return title + name + department + thesis + site + tagsOpen + tags + tagsClose + hr;
-    }
-
-    renderSorter() {
-        const surname = (this.sortedBySurname ? `<b>Surname ${this.descending ? '(Descending)' : ""} </b>` : `Surname `)
-        const institution = (this.sortedByInstitution ? `<b>Institution ${this.descending ? '(Descending)' : ""}</b>` : `Institution `)
-
-        $("#sort-surname").html(surname);
-        $("#sort-institution").html(institution);
-    }
-
-    sortBySurname() {
-
-        this.sortedBySurname = true;
-        this.sortedByInstitution = false;
-        this.descending = !this.descending;
-
-        let sortedMembers = this.members.sort((a, b) => a.surname.localeCompare(b.surname));
-
-        if (this.descending) {
-            sortedMembers.reverse();
-        }
-
-        this.renderMembers(sortedMembers);
-        this.renderSorter();
-    }
-
-    sortByInstitution() {
-
-        this.sortedBySurname = false;
-        this.sortedByInstitution = true;
-        this.descending = !this.descending;
-
-        let sortedMembers = this.members.sort((a, b) => a.letter.localeCompare(b.letter));
-
-        if (this.descending) {
-            sortedMembers.reverse();
-        }
-
-        this.renderMembers(sortedMembers);
-        this.renderSorter();
-    }
-
-    filterResearchArea(searchTerm) {
-
-        const filteredMembers = searchTerm ? this.members.filter(x => x.tags.some(y => y.toLowerCase().includes(searchTerm.toLowerCase()))) : this.members;
-
-        this.renderMembers(filteredMembers);
     }
 }

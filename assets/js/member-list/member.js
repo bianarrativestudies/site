@@ -33,6 +33,9 @@ class Member {
     }
 
     containsTag(tag) {
+
+        if (!tag) return true;
+
         return this.tags.some(x => x.toLowerCase() == tag.toLowerCase());
     }
 
@@ -46,6 +49,24 @@ class Member {
         }
 
         return "";
+    }
+
+    getHtml() {
+        const title = `<h2 class="member-institution">${this.institution} (${this.city})</h2>`;
+        const name = `<h2 class="member-name">${this.title} ${this.forename} ${this.surname}</h2>`;
+        const department = `<p class="member-department">${this.department}</p>`;
+        const thesis = `<p class="member-thesis"><i>${this.thesis}</i></p>`;
+        const site = `<p class="member-site"><a href="${this.webpage}">Visit Site</a></p>`;
+        const tagsOpen = `<p class="member-tags">Research Interests: |`;
+
+        let tags = ""
+
+        this.tags.forEach(x => tags += ` <a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`);
+
+        const tagsClose = `</p>`;
+        const hr = `<hr />`;
+
+        return title + name + department + thesis + site + tagsOpen + tags + tagsClose + hr;
     }
 
 }
