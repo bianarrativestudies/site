@@ -92,7 +92,7 @@
 	$("#top").on("click", function () {
 		handler.resetAll();
 	});
-	
+
 	$("#sort-surname").on("click", function () {
 		handler.sortBySurname();
 	});
@@ -101,15 +101,23 @@
 		handler.sortByInstitution();
 	});
 
-	$('#member-form').on('submit', function(e) {
-        e.preventDefault();
+	$('#member-form').on('submit', function (e) {
+		e.preventDefault();
 		var data = $("#member-form :input").serializeArray();
 		handler.processForm(data);
-    });
+	});
+
+	$('.search-tag').on('click', function (e) {
+
+		const tag = $(this).text().replace(',', '').trim();
+
+		const url = "members?tag=" + tag + "#top";
+		window.location.href = url;
+	});
 
 })(jQuery);
 
-function filter(tag) {
+function getMembersWithTag(tag) {
 	const url = "members?tag=" + tag + "#top";
 	window.location.href = url;
 }

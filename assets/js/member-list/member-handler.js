@@ -145,9 +145,9 @@ class MemberHandler {
 
         tags.forEach(x => {
             if (this.tag == x) {
-                content += `<a onclick="filter('${x.toString()}')" class="member-tag"><b>${x}</b></a> |`;
+                content += `<a onclick="getMembersWithTag('${x.toString()}')" class="member-tag"><b>${x}</b></a> |`;
             } else {
-                content += `<a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`;
+                content += `<a onclick="getMembersWithTag('${x.toString()}')" class="member-tag">${x}</a> |`;
             }
         })
 
