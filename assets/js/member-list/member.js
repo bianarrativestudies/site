@@ -3,6 +3,7 @@ class Member {
     title;
     forename;
     surname;
+    email;
     institution;
     city;
     department;
@@ -11,15 +12,18 @@ class Member {
     tags = [];
 
     constructor(data) {
-        this.title = data.title;
-        this.forename = data.forename;
-        this.surname = data.surname;
-        this.institution = data.institution;
-        this.city = data.city;
-        this.thesis = data.thesis;
-        this.department = data.department;
-        this.webpage = data.webpage;
-        this.tags = data.tags;
+        if (data) {
+            this.title = data.title;
+            this.forename = data.forename;
+            this.surname = data.surname;
+            this.email = null;
+            this.institution = data.institution;
+            this.city = data.city;
+            this.thesis = data.thesis;
+            this.department = data.department;
+            this.webpage = data.webpage;
+            this.tags = data.tags;
+        }
     }
 
     getFullName() {

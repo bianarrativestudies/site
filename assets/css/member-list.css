@@ -18,6 +18,12 @@
     border-color: #adadad !important;
 }
 
+.member-form {
+    margin: 0 0 2em 0;
+    background-color: #ececec !important;
+    padding: 80px !important;
+}
+
 .hidden {
     visibility: hidden;
 }
@@ -43,26 +49,10 @@ margin-top: 75px;
     color: #667380 !important;
 }
 
-.member-name {
-    
-}
-
-.member-department {
-
-}
-
-.member-thesis {
-
-}
-
-.member-site {
-
-}
-
-.member-tags-title {
-
-}
-
-.member-tags {
-
+@media screen and (max-width: 1280px) {
+    .member-form {
+        margin: 0 0 2em 0;
+        background-color: white !important;
+        padding: 5px !important;
+    }
 }

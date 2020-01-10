@@ -118,6 +118,12 @@
 		handler.sortByCity();
 	});
 
+	$('#member-form').on('submit', function(e) { //use on if jQuery 1.7+
+        e.preventDefault();
+		var data = $("#member-form :input").serializeArray();
+		handler.processForm(data);
+    });
+
 })(jQuery);
 
 function filter(tag) {
