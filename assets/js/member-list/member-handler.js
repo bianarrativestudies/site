@@ -54,7 +54,7 @@ class MemberHandler {
         let code = btoa(memberString).toString("base64");
         console.log(code);
 
-        $("#code-generated-label").html(`<b>Thanks! Please send the code below to <a href="mailto:bianarrativestudies@gmail.com">bianarrativestudies@gmail.com</a> to complete the sign up process</b>`);
+        $("#code-generated-label").html(`<b>Thanks! To complete the sign-up process, please send the code below to <a href="mailto:bianarrativestudies@gmail.com?subject=New%20Member&body=${code}>bianarrativestudies@gmail.com</a></b>`);
         $("#code-generated").html(code);
     }
 
