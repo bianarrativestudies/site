@@ -131,3 +131,21 @@ function jumpToLetter(letter) {
 	const url = "members#" + letter;
 	window.location.href = url;
 }
+
+var topButton = document.getElementById("backToTop");
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    topButton.style.display = "block";
+  } else {
+    topButton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function backToTop() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
