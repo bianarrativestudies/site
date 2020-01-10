@@ -1,6 +1,7 @@
 class MemberHandler {
 
     members = [];
+    tags = [];
 
     sortedBySurname = false;
     sortedByInstitution = false;
@@ -17,6 +18,8 @@ class MemberHandler {
 
         data.forEach(x => this.members.push(new Member(x)));
 
+        this.tags = this.getDistinctTags(this.members);
+
         console.log("Found " + this.members.length + " members.");
 
         const tag = (new URL(document.location)).searchParams.get("tag");
@@ -32,6 +35,14 @@ class MemberHandler {
         $.getJSON("../assets/data/member-data.json", data => {
             this.populateList(data);
         });
+    }
+
+    getDistinctTags(data) {
+        return data
+        .map(x => x.tags)
+        .reduce((a, b) => a.concat(b), [])
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort((a, b) => a.localeCompare(b));
     }
 
     renderMembers(filteredMembers) {
@@ -82,8 +93,6 @@ class MemberHandler {
         this.sortedByCity = false;
         this.descending = !this.descending;
 
-        console.log("Sorting by surname");
-
         let sortedMembers = this.members.sort((a, b) => a.surname.localeCompare(b.surname));
 
         if (this.descending) {
@@ -101,8 +110,6 @@ class MemberHandler {
         this.sortedByCity = false;
         this.descending = !this.descending;
 
-        console.log("Sorting by inst");
-
         let sortedMembers = this.members.sort((a, b) => a.institution.localeCompare(b.institution));
 
         if (this.descending) {
@@ -119,8 +126,6 @@ class MemberHandler {
         this.sortedByInstitution = false;
         this.sortedByCity = true;
         this.descending = !this.descending;
-
-        console.log("Sorting by city");
 
         let sortedMembers = this.members.sort((a, b) => a.city.localeCompare(b.city));
 
