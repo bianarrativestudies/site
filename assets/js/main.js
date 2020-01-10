@@ -84,24 +84,12 @@
 
 	handler.fetchData();
 
-	$("#member-surname-filter").on("keyup", function () {
-		var value = this.value.toLowerCase().trim();
-		handler.filterSurname(value);
-	});
-
-	$("#member-institution-filter").on("keyup", function () {
-		var value = this.value.toLowerCase().trim();
-		handler.filterInstitute(value);
-	});
-
 	$("#member-research-filter").on("keyup", function () {
 		var value = this.value.toLowerCase().trim();
 		handler.filterResearchArea(value);
 	});
 
 	$("#top").on("click", function () {
-		$('#member-surname-filter').val(null);
-		$('#member-institution-filter').val(null);
 		$('#member-research-filter').val(null);
 		handler.filterResearchArea(null);
 	});
@@ -114,11 +102,7 @@
 		handler.sortByInstitution();
 	});
 
-	$("#sort-city").on("click", function () {
-		handler.sortByCity();
-	});
-
-	$('#member-form').on('submit', function(e) { //use on if jQuery 1.7+
+	$('#member-form').on('submit', function(e) {
         e.preventDefault();
 		var data = $("#member-form :input").serializeArray();
 		handler.processForm(data);
@@ -137,5 +121,6 @@ function clearFilters() {
 }
 
 function jumpToLetter(letter) {
-	console.log("Jumping to " + letter)
+	const url = "members#" + letter;
+	window.location.href = url;
 }

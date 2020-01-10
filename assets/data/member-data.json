@@ -5,15 +5,14 @@
         "surname": "Aardvark",
         "institution": "University of Testing",
         "city": "York",
-        "department": "Testing",
-        "thesis": "Theories of Testing",
+        "department": "Philosophy",
+        "thesis": "Perceptions of perceiving",
         "webpage": "https://www.test.ac.uk",
         "tags": [
-            "Alpha Testing",
-            "Trying",
-            "Breaking Stuff"
+            "Empirical research",
+            "Authorship"
         ],
-        "letter": ""
+        "letter": "T"
     },
     {
         "title": "Mrs",
@@ -21,31 +20,32 @@
         "surname": "Middlington",
         "institution": "Alpha Institute",
         "city": "Washington",
-        "department": "Testing",
-        "thesis": "Theories of Testing",
+        "department": "English Literature",
+        "thesis": "Theories of Theory",
         "webpage": "https://www.test.ac.uk",
         "tags": [
-            "Beta Testing",
-            "Trying",
-            "Breaking Stuff"
+            "Contextualist narratology",
+            "Memory studies",
+            "Narrative medicine"
         ],
-        "letter": ""
+        "letter": "A"
     },
     {
         "title": "Mrs",
         "forename": "Susan",
         "surname": "Strong",
-        "institution": "Beta University",
+        "institution": "Something College",
         "city": "Boston",
-        "department": "Testing",
-        "thesis": "Theories of Testing",
+        "department": "Future Studies",
+        "thesis": "Discussing discussion",
         "webpage": "https://www.test.ac.uk",
         "tags": [
-            "Delta Testing",
-            "Trying",
-            "Breaking Stuff"
+            "Digital media",
+            "Interactive narrative",
+            "Music",
+            "AI narrative"
         ],
-        "letter": ""
+        "letter": "S"
     },
     {
         "title": "Dr",
@@ -53,14 +53,16 @@
         "surname": "Zappa",
         "institution": "Institute for Smashing",
         "city": "Aberdeen",
-        "department": "Testing",
-        "thesis": "Theories of Testing",
+        "department": "Physical Education",
+        "thesis": "Cognizing cognizance",
         "webpage": "https://www.test.ac.uk",
         "tags": [
-            "Gamma Testing",
-            "Trying",
-            "Breaking Stuff"
+            "Structuralism",
+            "Interdisciplinary research",
+            "Rhetoric",
+            "Pragmatics",
+            "Creativity"
         ],
-        "letter": ""
+        "letter": "S"
     }
 ]

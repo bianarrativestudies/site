@@ -6,7 +6,6 @@ class MemberHandler {
 
     sortedBySurname = false;
     sortedByInstitution = false;
-    sortedByCity = false;
     descending = true;
 
     constructor() {
@@ -64,17 +63,17 @@ class MemberHandler {
 
     getDistinctTags(data) {
         return data
-        .map(x => x.tags)
-        .reduce((a, b) => a.concat(b), [])
-        .filter((value, index, self) => self.indexOf(value) === index)
-        .sort((a, b) => a.localeCompare(b));
+            .map(x => x.tags)
+            .reduce((a, b) => a.concat(b), [])
+            .filter((value, index, self) => self.indexOf(value) === index)
+            .sort((a, b) => a.localeCompare(b));
     }
 
     getDistinctLetters(data) {
         return data
-        .map(x => x.letter)
-        .filter((value, index, self) => self.indexOf(value) === index)
-        .sort((a, b) => a.localeCompare(b));
+            .map(x => x.letter)
+            .filter((value, index, self) => self.indexOf(value) === index)
+            .sort((a, b) => a.localeCompare(b));
     }
 
     renderTagList(data) {
@@ -97,7 +96,27 @@ class MemberHandler {
 
         let content = "";
 
-        filteredMembers.forEach(x => content += this.getMemberForRender(x));
+        if (!this.sortedByInstitution && !this.sortedBySurname) {
+
+            const noLetterMembers = filteredMembers.filter(x => x.letter == false);
+
+            if (noLetterMembers && noLetterMembers.length > 0) {
+                content += `<a id=no-letter>None</a><br>`;
+                noLetterMembers.forEach(x => content += this.getMemberForRender(x));
+            }
+
+            for (var i = 0; i < this.letters.length; i++) {
+                const letter = this.letters[i];
+
+                const letterMembers = filteredMembers.filter(x => x.letter == letter);
+
+                content += `<a id=${letter}>${letter}</a><br><br>`;
+                letterMembers.forEach(x => content += this.getMemberForRender(x));
+
+            }
+        } else {
+            filteredMembers.forEach(x => content += this.getMemberForRender(x));
+        }
 
         if (!content) {
             content = "<h3>No results for search term</h3>"
@@ -127,18 +146,15 @@ class MemberHandler {
     renderSorter() {
         const surname = (this.sortedBySurname ? `<b>Surname ${this.descending ? '(Descending)' : ""} </b>` : `Surname `)
         const institution = (this.sortedByInstitution ? `<b>Institution ${this.descending ? '(Descending)' : ""}</b>` : `Institution `)
-        const city = (this.sortedByCity ? `<b>City ${this.descending ? '(Descending)' : ""}</b>` : `City`)
 
         $("#sort-surname").html(surname);
         $("#sort-institution").html(institution);
-        $("#sort-city").html(city);
     }
 
     sortBySurname() {
 
         this.sortedBySurname = true;
         this.sortedByInstitution = false;
-        this.sortedByCity = false;
         this.descending = !this.descending;
 
         let sortedMembers = this.members.sort((a, b) => a.surname.localeCompare(b.surname));
@@ -152,10 +168,9 @@ class MemberHandler {
     }
 
     sortByInstitution() {
-        
+
         this.sortedBySurname = false;
         this.sortedByInstitution = true;
-        this.sortedByCity = false;
         this.descending = !this.descending;
 
         let sortedMembers = this.members.sort((a, b) => a.letter.localeCompare(b.letter));
@@ -166,38 +181,6 @@ class MemberHandler {
 
         this.renderMembers(sortedMembers);
         this.renderSorter();
-    }
-
-    sortByCity() {
-        
-        this.sortedBySurname = false;
-        this.sortedByInstitution = false;
-        this.sortedByCity = true;
-        this.descending = !this.descending;
-
-        let sortedMembers = this.members.sort((a, b) => a.city.localeCompare(b.city));
-
-        if (this.descending) {
-            sortedMembers.reverse();
-        }
-
-        this.renderMembers(sortedMembers);
-        this.renderSorter();
-    }
-
-    filterSurname(searchTerm) {
-
-        const filteredMembers = searchTerm ? this.members.filter(x => x.surname.toLowerCase().includes(searchTerm.toLowerCase())) : this.members;
-
-        this.renderMembers(filteredMembers);
-    }
-
-    filterInstitute(searchTerm) {
-        const filteredMembers = searchTerm ?
-            this.members.filter(x => x.institution.toLowerCase().includes(searchTerm.toLowerCase()) || x.city.toLowerCase().includes(searchTerm.toLowerCase()))
-            : this.members;
-
-        this.renderMembers(filteredMembers);
     }
 
     filterResearchArea(searchTerm) {
