@@ -10,6 +10,7 @@ class Member {
     thesis;
     webpage;
     tags = [];
+    letter;
 
     constructor(data) {
         if (data) {
@@ -23,6 +24,7 @@ class Member {
             this.department = data.department;
             this.webpage = data.webpage;
             this.tags = data.tags;
+            this.letter = data.letter ? data.letter : this.generateLetter(data);
         }
     }
 
@@ -32,6 +34,18 @@ class Member {
 
     containsTag(tag) {
         return this.tags.some(x => x.toLowerCase() == tag.toLowerCase());
+    }
+
+    generateLetter(data) {
+        if (data.city) {
+            return data.city[0].toUpperCase();
+        }
+
+        if (data.institution) {
+            return data.institution[0].toUpperCase();
+        }
+
+        return "";
     }
 
 }

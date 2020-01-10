@@ -135,3 +135,7 @@ function clearFilters() {
 	const url = "members#top";
 	window.location.href = url;
 }
+
+function jumpToLetter(letter) {
+	console.log("Jumping to " + letter)
+}

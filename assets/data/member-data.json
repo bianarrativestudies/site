@@ -12,7 +12,8 @@
             "Alpha Testing",
             "Trying",
             "Breaking Stuff"
-        ]
+        ],
+        "letter": ""
     },
     {
         "title": "Mrs",
@@ -27,7 +28,8 @@
             "Beta Testing",
             "Trying",
             "Breaking Stuff"
-        ]
+        ],
+        "letter": ""
     },
     {
         "title": "Mrs",
@@ -42,7 +44,8 @@
             "Delta Testing",
             "Trying",
             "Breaking Stuff"
-        ]
+        ],
+        "letter": ""
     },
     {
         "title": "Dr",
@@ -57,6 +60,7 @@
             "Gamma Testing",
             "Trying",
             "Breaking Stuff"
-        ]
+        ],
+        "letter": ""
     }
 ]

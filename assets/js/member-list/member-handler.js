@@ -2,6 +2,7 @@ class MemberHandler {
 
     members = [];
     tags = [];
+    letters = [];
 
     sortedBySurname = false;
     sortedByInstitution = false;
@@ -19,6 +20,7 @@ class MemberHandler {
         data.forEach(x => this.members.push(new Member(x)));
 
         this.tags = this.getDistinctTags(this.members);
+        this.letters = this.getDistinctLetters(this.members);
 
         console.log("Found " + this.members.length + " members.");
 
@@ -29,6 +31,8 @@ class MemberHandler {
 
         this.filterResearchArea(tag);
         this.renderSorter();
+        this.renderTagList(this.tags);
+        this.renderLetterList(this.letters);
     }
 
     fetchData() {
@@ -64,6 +68,29 @@ class MemberHandler {
         .reduce((a, b) => a.concat(b), [])
         .filter((value, index, self) => self.indexOf(value) === index)
         .sort((a, b) => a.localeCompare(b));
+    }
+
+    getDistinctLetters(data) {
+        return data
+        .map(x => x.letter)
+        .filter((value, index, self) => self.indexOf(value) === index)
+        .sort((a, b) => a.localeCompare(b));
+    }
+
+    renderTagList(data) {
+        let content = "";
+
+        data.forEach(x => content += `<a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`)
+
+        $("#tag-list").html(content);
+    }
+
+    renderLetterList(data) {
+        let content = "";
+
+        data.forEach(x => content += `<a onclick="jumpToLetter('${x.toString()}')" class="member-tag">${x}</a> `)
+
+        $("#letter-list").html(content);
     }
 
     renderMembers(filteredMembers) {
@@ -131,7 +158,7 @@ class MemberHandler {
         this.sortedByCity = false;
         this.descending = !this.descending;
 
-        let sortedMembers = this.members.sort((a, b) => a.institution.localeCompare(b.institution));
+        let sortedMembers = this.members.sort((a, b) => a.letter.localeCompare(b.letter));
 
         if (this.descending) {
             sortedMembers.reverse();

@@ -58,19 +58,21 @@
 
 					<p>This directory provides key information about the members of the association, including
 						institutional affiliation, web page and research interests.</p>
-					<h3>Filter</h3>
-					<p><a id="top" onclick="clearFilters()">Clear filters</a></p>
-					<p class="member-input-container"><b>Surname</b> <input class="member-input" type="text"
-							id="member-surname-filter" placeholder="e.g. Smith" title="Filter"></p>
-					<p class="member-input-container"><b>Institution</b> <input class="member-input" type="text"
-							id="member-institution-filter" placeholder="e.g. University of York" title="Filter"></p>
-					<p class="member-input-container"><b>Research Area</b> <input class="member-input" type="text"
-							id="member-research-filter" placeholder="e.g. Narrative" title="Filter"></p>
 					<hr />
 					<h2 id="member-list-title">Members</h2>
 					<hr />
-					Sort by: <span id="sort-surname" class="member-sort"></span> | <span id="sort-institution"
-						class="member-sort"></span> | <span id="sort-city" class="member-sort"></span>
+					<h3>Filter</h3>
+					<p class="member-input-container"><b>Research Area</b> <input class="member-input" type="text"
+							id="member-research-filter" placeholder="e.g. Narrative" title="Filter"></p>
+					<br>
+					<p><a id="top" onclick="clearFilters()">Clear filters</a></p>
+					<hr />
+					<b>Sort by:</b> <span id="sort-surname" class="member-sort"></span> | <span id="sort-institution"
+						class="member-sort"></span>
+					<br><br>
+					<b>Filter by area:</b> <span id="tag-list"></span>
+					<br><br>
+					<b>Jump to letter:</b> <span id="letter-list"></span>
 
 					<div id="member-list">Loading...</div>
 				</div>
