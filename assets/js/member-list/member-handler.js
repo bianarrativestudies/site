@@ -131,9 +131,15 @@ class MemberHandler {
         for (var i = 0; i < letters.length; i++) {
             const letter = letters[i];
 
-            const letterMembers = this.sortedBySurname ?
+            let letterMembers = this.sortedBySurname ?
                 filteredMembers.filter(x => x.surname[0] == letter) :
                 filteredMembers.filter(x => x.letter == letter);
+
+            letterMembers = letterMembers.sort((a, b) => {
+                const first = a.surname.toLowerCase();
+                const second = b.surname.toLowerCase();
+                return (first < second) ? -1 : (first > second) ? 1 : 0;
+            })
 
             content += `<a id=${letter}>${letter}</a><br><br>`;
             letterMembers.forEach(x => content += x.getHtml());
