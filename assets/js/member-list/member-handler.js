@@ -198,24 +198,24 @@ class MemberHandler {
         this.renderAll();
     }
 
-    processForm(data) {
+    // processForm(data) {
 
-        let member = new Member();
-        member.title = data[0].value;
-        member.firstname = data[1].value;
-        member.surname = data[2].value;
-        member.email = data[3].value;
-        member.institution = data[4].value;
-        member.department = data[5].value;
-        member.city = data[6].value;
-        member.thesis = data[7].value;
-        member.tags = data[8].value;
+    //     let member = new Member();
+    //     member.title = data[0].value;
+    //     member.firstname = data[1].value;
+    //     member.surname = data[2].value;
+    //     member.email = data[3].value;
+    //     member.institution = data[4].value;
+    //     member.department = data[5].value;
+    //     member.city = data[6].value;
+    //     member.thesis = data[7].value;
+    //     member.tags = data[8].value;
 
-        let memberString = JSON.stringify(member);
-        let code = btoa(memberString).toString("base64");
-        console.log(code);
+    //     let memberString = JSON.stringify(member);
+    //     let code = btoa(memberString).toString("base64");
+    //     console.log(code);
 
-        $("#code-generated-label").html(`<b>Thanks! To complete the sign-up process, please send the code below to <a href="mailto:bianarrativestudies@gmail.com?subject=New%20Member&body=${code}">bianarrativestudies@gmail.com</a></b>`);
-        $("#code-generated").html(code);
-    }
+    //     $("#code-generated-label").html(`<b>Thanks! To complete the sign-up process, please send the code below to <a href="mailto:bianarrativestudies@gmail.com?subject=New%20Member&body=${code}">bianarrativestudies@gmail.com</a></b>`);
+    //     $("#code-generated").html(code);
+    // }
 }
