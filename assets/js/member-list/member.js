@@ -41,7 +41,7 @@ class Member {
         media = media.map(x => x.trim());
         fields = fields.map(x => x.trim());
         topics = topics.map(x => x.trim());
-        other = other.map(x => x.trim()).map(x => x[0].toUpperCase());
+        other = other.map(x => x.trim());
 
         approaches.forEach(x => splitTags.push(x));
         media.forEach(x => splitTags.push(x));
