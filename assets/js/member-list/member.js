@@ -1,11 +1,9 @@
 class Member {
 
-    title;
     forename;
     surname;
     email;
     institution;
-    city;
     department;
     thesis;
     webpage;
@@ -14,22 +12,41 @@ class Member {
 
     constructor(data) {
         if (data) {
-            this.title = data.title;
-            this.forename = data.forename;
-            this.surname = data.surname;
+            this.forename = data[1];
+            this.surname = data[2];
             this.email = null;
-            this.institution = data.institution;
-            this.city = data.city;
-            this.thesis = data.thesis;
-            this.department = data.department;
-            this.webpage = data.webpage;
-            this.tags = data.tags;
-            this.letter = data.letter ? data.letter : this.generateLetter(data);
+            this.institution = data[3];
+            this.department = data[4];
+            this.thesis = data[5];
+            this.webpage = data[10];
+            this.tags = this.generateTags(data);
+            this.letter = data[14] ? data[14] : "0";
         }
     }
 
     getFullName() {
-        return this.title + " " + this.forename + " " + this.surname;
+        return this.forename + " " + this.surname;
+    }
+
+    generateTags(data) {
+        let splitTags = [];
+
+        let approaches = data[6].split(',');
+        let media = data[7].split(',');
+        let fields = data[8].split(',');
+        let topics = data[9].split(',');
+
+        approaches = approaches.map(x => x.trim());
+        media = media.map(x => x.trim());
+        fields = fields.map(x => x.trim());
+        topics = topics.map(x => x.trim());
+
+        approaches.forEach(x => splitTags.push(x));
+        media.forEach(x => splitTags.push(x));
+        fields.forEach(x => splitTags.push(x));
+        topics.forEach(x => splitTags.push(x));
+
+        return splitTags;
     }
 
     containsTag(tag) {
@@ -39,21 +56,9 @@ class Member {
         return this.tags.some(x => x.toLowerCase() == tag.toLowerCase());
     }
 
-    generateLetter(data) {
-        if (data.city) {
-            return data.city[0].toUpperCase();
-        }
-
-        if (data.institution) {
-            return data.institution[0].toUpperCase();
-        }
-
-        return "";
-    }
-
     getHtml() {
-        const title = `<h2 class="member-institution">${this.institution} (${this.city})</h2>`;
-        const name = `<h2 class="member-name">${this.title} ${this.forename} ${this.surname}</h2>`;
+        const title = `<h2 class="member-institution">${this.institution}</h2>`;
+        const name = `<h2 class="member-name">${this.forename} ${this.surname}</h2>`;
         const department = `<p class="member-department">${this.department}</p>`;
         const thesis = `<p class="member-thesis"><i>${this.thesis}</i></p>`;
         const site = `<p class="member-site"><a href="${this.webpage}">Visit Site</a></p>`;

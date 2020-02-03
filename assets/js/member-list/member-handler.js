@@ -1,5 +1,7 @@
 class MemberHandler {
 
+    apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/1cAUkGbgaErzZ8QCCycsmtcpEr-8E97-8bOIBqThmawM/values/Members?key=AIzaSyCanvsdqXWInMUzK2nY5Lmfjg1pI5q1wwc";
+
     members = [];
     tags = [];
     letters = [];
@@ -15,15 +17,25 @@ class MemberHandler {
 
     }
 
-    fetchData() {
+    fetchDataOld() {
         $.getJSON("../assets/data/member-data.json", data => {
             this.populateList(data);
+        });
+    }
+
+    fetchData() {
+        $.getJSON(this.apiUrl, data => {
+            console.log(data.values);
+            this.populateList(data.values);
         });
     }
 
     populateList(data) {
 
         this.members = [];
+
+        // Remove headers
+        data.splice(0, 1);
 
         data.forEach(x => this.members.push(new Member(x)));
 
