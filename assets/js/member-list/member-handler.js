@@ -17,15 +17,8 @@ class MemberHandler {
 
     }
 
-    fetchDataOld() {
-        $.getJSON("../assets/data/member-data.json", data => {
-            this.populateList(data);
-        });
-    }
-
     fetchData() {
         $.getJSON(this.apiUrl, data => {
-            console.log(data.values);
             this.populateList(data.values);
         });
     }
