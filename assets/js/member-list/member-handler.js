@@ -31,7 +31,7 @@ class MemberHandler {
         data.splice(0, 1);
 
         // Remove unconfirmed
-        data = data.values.filter(x => !x[12]);
+        data = data.filter(x => !x[12]);
 
         data.forEach(x => this.members.push(new Member(x)));
 
