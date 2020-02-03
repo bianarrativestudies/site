@@ -35,16 +35,19 @@ class Member {
         let media = data[7].split(',');
         let fields = data[8].split(',');
         let topics = data[9].split(',');
+        let other = data[11].split(';');
 
         approaches = approaches.map(x => x.trim());
         media = media.map(x => x.trim());
         fields = fields.map(x => x.trim());
         topics = topics.map(x => x.trim());
+        other = other.map(x => x.trim());
 
         approaches.forEach(x => splitTags.push(x));
         media.forEach(x => splitTags.push(x));
         fields.forEach(x => splitTags.push(x));
         topics.forEach(x => splitTags.push(x));
+        other.forEach(x => splitTags.push(x));
 
         return splitTags;
     }
