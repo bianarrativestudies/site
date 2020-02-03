@@ -1,6 +1,6 @@
 class MemberHandler {
 
-    apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/1cAUkGbgaErzZ8QCCycsmtcpEr-8E97-8bOIBqThmawM/values/Members?key=AIzaSyCanvsdqXWInMUzK2nY5Lmfjg1pI5q1wwc";
+    apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/1cAUkGbgaErzZ8QCCycsmtcpEr-8E97-8bOIBqThmawM/values/Members?key=AIzaSyDDEcHh6LUVMumtKM6-eJoYhvs5edHLzcQ";
 
     members = [];
     tags = [];
