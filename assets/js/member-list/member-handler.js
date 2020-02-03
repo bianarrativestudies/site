@@ -79,7 +79,7 @@ class MemberHandler {
 
         const term = this.searchTerm.toLowerCase();
 
-        return members.filter(x => 
+        return members.filter(x =>
             x.tags.some(y => y.toLowerCase().includes(term)) ||
             x.surname.toLowerCase().includes(term) ||
             x.city.toLowerCase().includes(term) ||
@@ -180,18 +180,20 @@ class MemberHandler {
 
     sortBySurname() {
 
+        this.descending = this.sortedBySurname ? !this.descending : false;
+
         this.sortedBySurname = true;
         this.sortedByInstitution = false;
-        this.descending = !this.descending;
 
         this.renderAll();
     }
 
     sortByInstitution() {
 
+        this.descending = this.sortedByInstitution ? !this.descending : false;
+
         this.sortedBySurname = false;
         this.sortedByInstitution = true;
-        this.descending = !this.descending;
 
         this.renderAll();
     }
