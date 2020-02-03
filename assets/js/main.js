@@ -101,11 +101,11 @@
 		handler.sortByInstitution();
 	});
 
-	$('#member-form').on('submit', function (e) {
-		e.preventDefault();
-		var data = $("#member-form :input").serializeArray();
-		handler.processForm(data);
-	});
+	// $('#member-form').on('submit', function (e) {
+	// 	e.preventDefault();
+	// 	var data = $("#member-form :input").serializeArray();
+	// 	handler.processForm(data);
+	// });
 
 	$('.search-tag').on('click', function (e) {
 
