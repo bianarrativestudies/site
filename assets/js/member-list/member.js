@@ -35,7 +35,7 @@ class Member {
         let media = data[7].split(',');
         let fields = data[8].split(',');
         let topics = data[9].split(',');
-        let other = data[11].split(';');
+        let other = data[11].split(';').filter(x => x.length > 0);
 
         approaches = approaches.map(x => x.trim());
         media = media.map(x => x.trim());
