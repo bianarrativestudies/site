@@ -20,7 +20,7 @@ class Member {
             this.thesis = data[5];
             this.webpage = data[10];
             this.tags = this.generateTags(data);
-            this.letter = data[14] ? data[14] : "0";
+            this.letter = data[14] ? data[14] : "-";
         }
     }
 
@@ -63,13 +63,13 @@ class Member {
         const title = `<h2 class="member-institution">${this.institution}</h2>`;
         const name = `<h2 class="member-name">${this.forename} ${this.surname}</h2>`;
         const department = `<p class="member-department">${this.department}</p>`;
-        const thesis = `<p class="member-thesis"><i>Thesis title: ${this.thesis}</i></p>`;
+        const thesis = this.thesis ? `<p class="member-thesis">Thesis title: <i>${this.thesis}</i></p>` : "";
         const site = this.webpage ? `<p class="member-site"><a href="${this.webpage}">Visit Webpage</a></p>` : "";
         const tagsOpen = `<p class="member-tags">Research Interests: |`;
 
         let tags = ""
 
-        this.tags.forEach(x => tags += ` <a onclick="filter('${x.toString()}')" class="member-tag">${x}</a> |`);
+        this.tags.forEach(x => tags += ` <a onclick="getMembersWithTag('${x.toString()}')" class="member-tag">${x}</a> |`);
 
         const tagsClose = `</p>`;
         const hr = `<hr />`;
