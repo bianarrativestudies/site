@@ -82,12 +82,12 @@ input, select, textarea {
 }
 
 ::selection {
-	background: #ffb7b7; /* WebKit/Blink Browsers */
-	color: black;
+	background: #009688;
+	color: white;
   }
   ::-moz-selection {
-	background: #ffb7b7; /* Gecko Browsers */
-	color: black;
+	background: #009688;
+	color: white;
   }
 
 .twitter-box {
