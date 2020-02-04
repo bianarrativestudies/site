@@ -177,8 +177,8 @@ class MemberHandler {
     }
 
     renderSorter() {
-        const surname = (this.sortedBySurname ? `<b>Surname ${this.descending ? '(Descending)' : ""} </b>` : `Surname `)
-        const institution = (this.sortedByInstitution ? `<b>Institution ${this.descending ? '(Descending)' : ""}</b>` : `Institution `)
+        const surname = (this.sortedBySurname ? `<b class="upper">Surname ${this.descending ? '(Descending)' : ""} </b>` : `Surname `)
+        const institution = (this.sortedByInstitution ? `<b class="upper">Institution ${this.descending ? '(Descending)' : ""}</b>` : `Institution `)
 
         $("#sort-surname").html(surname);
         $("#sort-institution").html(institution);
