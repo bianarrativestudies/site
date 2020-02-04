@@ -128,8 +128,16 @@ function clearFilters() {
 }
 
 function jumpToLetter(letter) {
-	const url = "members#" + letter;
-	window.location.href = url;
+	// const url = "members#" + letter;
+	// window.location.href = url;
+
+	const element = document.getElementById("#" + letter);
+
+	if (element) {
+		element.scrollIntoView();
+	} else {
+		console.log("Element did not exist");
+	}
 }
 
 var topButton = document.getElementById("backToTop");
