@@ -79,6 +79,11 @@ margin-top: 75px;
     height: 750px;
   }
 
+  .sorter {
+      background-color: gainsboro;
+      padding: 1%;
+  }
+
 @media screen and (max-width: 1280px) {
     .member-form {
         margin: 0 0 2em 0;
