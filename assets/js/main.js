@@ -131,7 +131,7 @@ function jumpToLetter(letter) {
 	// const url = "members#" + letter;
 	// window.location.href = url;
 
-	const element = document.getElementById("#" + letter);
+	const element = document.getElementById(letter);
 
 	if (element) {
 		element.scrollIntoView();
