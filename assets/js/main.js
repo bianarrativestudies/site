@@ -89,9 +89,9 @@
 		handler.renderAll();
 	});
 
-	$("#top").on("click", function () {
-		handler.resetAll();
-	});
+	// $("#top").on("click", function () {
+	// 	handler.resetAll();
+	// });
 
 	$("#sort-surname").on("click", function () {
 		handler.sortBySurname();

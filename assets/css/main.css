@@ -82,11 +82,11 @@ input, select, textarea {
 }
 
 ::selection {
-	background: #009688;
+	background: #607D8B;
 	color: white;
   }
   ::-moz-selection {
-	background: #009688;
+	background: #607D8B;
 	color: white;
   }
 
