@@ -135,6 +135,10 @@ function jumpToLetter(letter) {
 	}
 }
 
+function newTab(address) {
+	window.open(address, "_blank");
+}
+
 var topButton = document.getElementById("backToTop");
 
 window.onscroll = function() {scrollFunction()};

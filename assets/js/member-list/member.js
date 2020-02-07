@@ -64,7 +64,7 @@ class Member {
         const name = `<h2 class="member-name">${this.forename} ${this.surname}</h2>`;
         const department = `<p class="member-department">${this.department}</p>`;
         const thesis = this.thesis ? `<p class="member-thesis">Thesis title: <i>${this.thesis}</i></p>` : "";
-        const site = this.webpage ? `<p class="member-site"><a href="${this.webpage}">Visit Webpage</a></p>` : "";
+        const site = this.webpage ? `<p class="member-site"><span class="member-site-link" onclick="newTab(${this.webpage})">Visit Webpage</span></p>` : "";
         const tagsOpen = `<p class="member-tags">Research Interests: |`;
 
         let tags = ""

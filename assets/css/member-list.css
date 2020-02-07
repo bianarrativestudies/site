@@ -83,6 +83,10 @@ margin-top: 75px;
      
   }
 
+  .member-site-link {
+      text-decoration: underline;
+  }
+
   .upper {
       text-transform: uppercase;
   }
