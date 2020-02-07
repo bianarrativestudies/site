@@ -9,7 +9,7 @@ class MemberHandler {
     searchTerm = "";
     tag = "";
 
-    sortedBySurname = false;
+    sortedBySurname = true;
     sortedByInstitution = false;
     descending = false;
 
