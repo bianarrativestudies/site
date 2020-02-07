@@ -85,6 +85,7 @@ margin-top: 75px;
 
   .member-site-link {
       text-decoration: underline;
+      cursor: pointer;
   }
 
   .upper {
