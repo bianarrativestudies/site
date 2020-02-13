@@ -1,14 +1,14 @@
 class Member {
 
-    forename;
-    surname;
-    email;
-    institution;
-    department;
-    thesis;
-    webpage;
-    tags = [];
-    letter;
+    // forename;
+    // surname;
+    // email;
+    // institution;
+    // department;
+    // thesis;
+    // webpage;
+    // tags = [];
+    // letter;
 
     constructor(data) {
         if (data) {
