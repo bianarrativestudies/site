@@ -1,20 +1,18 @@
 class MemberHandler {
 
-    apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/1cAUkGbgaErzZ8QCCycsmtcpEr-8E97-8bOIBqThmawM/values/Members?key=AIzaSyDDEcHh6LUVMumtKM6-eJoYhvs5edHLzcQ";
-
-    members = [];
-    tags = [];
-    letters = [];
-
-    searchTerm = "";
-    tag = "";
-
-    sortedBySurname = true;
-    sortedByInstitution = false;
-    descending = false;
-
     constructor() {
+        this.apiUrl = "https://sheets.googleapis.com/v4/spreadsheets/1cAUkGbgaErzZ8QCCycsmtcpEr-8E97-8bOIBqThmawM/values/Members?key=AIzaSyDDEcHh6LUVMumtKM6-eJoYhvs5edHLzcQ";
 
+        this.members = [];
+        this.tags = [];
+        this.letters = [];
+    
+        this.searchTerm = "";
+        this.tag = "";
+    
+        this.sortedBySurname = true;
+        this.sortedByInstitution = false;
+        this.descending = false;
     }
 
     fetchData() {
